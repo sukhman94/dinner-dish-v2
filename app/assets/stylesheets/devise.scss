@@ -1,0 +1,211 @@
+.main-content{
+	width: 50%;
+	border-radius: 20px;
+	box-shadow: 0 5px 5px rgba(0,0,0,.4);
+	margin: 5em auto;
+	display: flex;
+}
+.company__info{
+	background-color: #008080;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	color: #fff;
+}
+.fa-android{
+	font-size:3em;
+}
+@media screen and (max-width: 640px) {
+	.main-content{width: 90%;}
+	.company__info{
+		display: none;
+	}
+	.login_form{
+		border-top-left-radius:20px;
+		border-bottom-left-radius:20px;
+	}
+}
+@media screen and (min-width: 642px) and (max-width:800px){
+	.main-content{width: 70%;}
+}
+.row > h2{
+	color:#008080;
+}
+.login_form{
+	background-color: #fff;
+	border-top-right-radius:20px;
+	border-bottom-right-radius:20px;
+	border-top:1px solid #ccc;
+	border-right:1px solid #ccc;
+}
+form{
+	padding: 0 2em;
+}
+.form__input{
+	width: 100%;
+	border:0px solid transparent;
+	border-radius: 0;
+	border-bottom: 1px solid #aaa;
+	padding: 1em .5em .5em;
+	padding-left: 2em;
+	outline:none;
+	margin:1.5em auto;
+	transition: all .5s ease;
+}
+.form__input:focus{
+	border-bottom-color: #008080;
+	box-shadow: 0 0 5px rgba(0,80,80,.4);
+	border-radius: 4px;
+}
+.btn{
+	transition: all .5s ease;
+	width: 70%;
+	border-radius: 30px;
+	color:#008080;
+	font-weight: 600;
+	background-color: #fff;
+	border: 1px solid #008080;
+	margin-top: 1.5em;
+	margin-bottom: 1em;
+}
+.btn:hover, .btn:focus{
+	background-color: #008080;
+	color:#fff;
+}
+
+.mt-5p{
+  margin-top: 6%;
+  margin-bottom: 5%;
+}
+
+
+// for signup
+.holder {
+	width: 440px;
+	background: #2196f3;
+	height: 600px;
+	margin: 50px auto;
+	outline: 5px solid #f2f2f2;
+	.parent {
+		background-color: white;
+		width: calc(100% - 50px);
+		height: calc(100% - 50px);
+		display: inline-block;
+		margin-left: 25px;
+		margin-top: 25px;
+		border-radius: 7px;
+		h3 {
+			text-align: center;
+			font-size: 25px;
+			margin-bottom: 0;
+		}
+	}
+}
+.signup-form {
+	display: block;
+	border-bottom: 1px dashed #ccc;
+	margin-left: 20px;
+	margin-right: 20px;
+	>div {
+		margin: 20px;
+		padding: 10px;
+		border-bottom: 1px solid #ccc;
+		position: relative;
+		&::before {
+			content: "\f007";
+			font-weight: 900;
+			font-family: "FontAwesome";
+			position: absolute;
+			color: #777;
+			left: -1px;
+		}
+		&:nth-child(2) {
+			&:before {
+				content: "\f2b6";
+			}
+		}
+		&:nth-child(3) {
+			&:before {
+				content: "\f023";
+			}
+		}
+		&:nth-child(4) {
+			&:before {
+				content: "\f023";
+			}
+		}
+	}
+	div {
+		input {
+			border: none;
+			font-family: "Work Sans", sans-serif;
+			font-size: 15px;
+			margin-left: 10px;
+		}
+	}
+	.private-inp {
+		border: none;
+		font-family: "work sans",sans-serif;
+		display: block;
+		margin: auto;
+		background: #2196f3;
+		width: 90%;
+		padding: 10px;
+		border-radius: 7px;
+		margin-bottom: 10px;
+		color: white;
+		font-size: 15px;
+		font-weight: bold;
+		cursor: pointer;
+	}
+	p {
+		margin: 20px;
+		text-align: center;
+		font-size: 12px;
+		color: #777;
+		padding: 15px;
+		a {
+			text-decoration: none;
+			font-weight: bold;
+			color: #2196f3ed;
+		}
+	}
+}
+div {
+	input {
+		+ {
+			.border {
+				position: absolute;
+				left: 50%;
+				bottom: -1px;
+				background-color: #3498db;
+				height: 1px;
+				width: 0;
+				transition: .3s;
+				display: block;
+			}
+		}
+		&:focus {
+			+ {
+				.border {
+					width: 100%;
+					left: 0;
+				}
+			}
+		}
+	}
+}
+.parent {
+	h4 {
+		text-align: center;
+		color: #777;
+	}
+}
+:focus {
+	&::placeholder {
+		opacity: 0;
+		transition: .5s;
+	}
+}

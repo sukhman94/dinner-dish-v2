@@ -1,0 +1,45 @@
+<!-- Main Content -->
+<div class="mx-auto mt-5p">
+	<div class="container-fluid">
+		<div class="row main-content bg-success text-center mx-auto">
+			<div class="col-md-4 text-center company__info">
+				<span class="company__logo"><h2><span class="fa fa-android"></span></h2></span>
+				<h4 class="company_title">Dinner Dash</h4>
+			</div>
+			<div class="col-md-8 col-xs-12 col-sm-12 login_form ">
+				<div class="container-fluid">
+					<div class="row">
+						<h2 class="text-center mx-auto mt-2">Log In</h2>
+					</div>
+					<div class="row">
+            <%= render 'layouts/notification' %>
+						<%= form_for(resource, as: resource_name, url: session_path(resource_name),:html => {:class => 'w-100'}) do |f| %>
+							<div class="row">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Username", class:"form__input" %>
+							</div>
+							<div class="row">
+                <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password", class:"form__input" %>
+							</div>
+							<div class="row">
+                <% if devise_mapping.rememberable? %>
+                  <div class="field">
+                    <%= f.check_box :remember_me %>
+                    <label for="remember_me">Remember Me!</label>
+                  </div>
+                <% end %>
+							</div>
+							<div class="row">
+                <%= f.submit "Log in", class:"btn" %>
+							</div>
+						<% end %>
+					</div>
+					<div class="row">
+						<p>Don't have an account? <%= link_to 'Register Here', new_user_registration_path %></p>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
