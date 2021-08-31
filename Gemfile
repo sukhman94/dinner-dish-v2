@@ -24,9 +24,11 @@ gem 'turbolinks', '~> 5'
 gem 'bootstrap', '~> 4.0'
 gem 'devise', '~> 4.8'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.7'
+gem 'image_processing', '~> 1.12', '>= 1.12.1'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails', '~> 4.4'
 gem 'pundit', '~> 2.1', '>= 2.1.1'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -44,6 +46,10 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'rubocop'
+  gem 'rubocop-performance'
+  gem 'rubocop-rails'
+  gem 'rubocop-minitest' # or gem 'rubocop-rspec' depending on your test suite
 end
 
 group :development do

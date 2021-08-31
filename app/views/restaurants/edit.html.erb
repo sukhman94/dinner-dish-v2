@@ -1,0 +1,10 @@
+<h1 class="text-center mt-5 pt-5">Editing Restaurant</h1>
+
+<%= render 'form', restaurant: @restaurant %>
+<div class="mx-auto">
+<h5 class="text-left h6">Attached Image:</h5>
+
+<%= restaurant_avatar(@restaurant) %> <br>
+</div>
+<%= link_to 'Show', @restaurant, class:"btn btn-info w-25" %> |
+<%= link_to 'Back', restaurant_path, class:"btn btn-warning w-25" %>
