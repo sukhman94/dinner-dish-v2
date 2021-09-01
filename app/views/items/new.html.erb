@@ -1,2 +1,6 @@
-<h1>Items#new</h1>
-<p>Find me in app/views/items/new.html.erb</p>
+<h1 class="text-center mt-5 pt-5">New Restaurant</h1>
+
+<%= render 'form', item: @item %>
+<div class="mx-auto justify-center">
+  <%= link_to 'Back', items_path, class:"btn btn-warning ml-2 w-25" %>
+</div>

@@ -4,16 +4,18 @@
     <title>Dinner Dash</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-
-    <%= render "layouts/navbar" %>
-    <%= render 'layouts/notification' %>
-    <%= yield %>
-    <%= render "layouts/footer" %>
+    <div id="wrapper">
+      <%= render "layouts/sidebar" %>
+      <div id="page-content-wrapper">
+        <%= render "layouts/navbar" %>
+        <%= render 'layouts/notification' %>
+        <%= yield %>
+        <%= render "layouts/footer" %>
+      </div>
+    </div>
   </body>
 </html>

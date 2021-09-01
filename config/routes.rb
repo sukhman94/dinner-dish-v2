@@ -2,7 +2,11 @@
 
 Rails.application.routes.draw do
   resources :categories, except: :show
-  resources :items
+  resources :items  do
+    member do
+      delete :delete_image_attachment
+    end
+  end
   resources :restaurants, except: :show
   devise_for :users
   root 'welcome#index'

@@ -1,2 +1,29 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<div class="mx-auto my-5 py-5 w-100">
+  <div class="card mx-auto" style="width: 18rem;">
+    <%= image_tag @item.item_image[0] %>
+    <div class="card-body">
+      <h5 class="card-title"><%= @item.name %></h5>
+      <p class="card-text"><%= @item.description %></p>
+      <p><%= @item.price %></p>
+    </div>
+  </div>
+  <div class="mx-auto w-100 text-center mt-5">
+    <h3>All Images</h3>
+    <div class="container-fluid mt-5">
+      <div class="row">
+        <% @item.item_image.each do |image| %>
+
+            <div class="col-md-4 text-center">
+              <div class="mw-75">
+                <% if @item.item_image.count > 1 %>
+                  <%= link_to 'x', delete_image_attachment_item_url(image.id), method: :delete,
+                        data: { confirm: 'Are you sure?' }, class:"close delete_img" %>
+                <% end %>
+                <%= image_tag image, class:"w-100 mt-2" %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

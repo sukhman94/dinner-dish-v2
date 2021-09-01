@@ -1,2 +1,6 @@
-<h1>Items#create</h1>
-<p>Find me in app/views/items/create.html.erb</p>
+<h1 class="text-center mt-5 pt-5">Editing Item</h1>
+
+<%= render 'form', item: @item %>
+
+<%= link_to 'Show', @item, class:"btn btn-info w-25" %> |
+<%= link_to 'Back', item_path, class:"btn btn-warning w-25" %>
