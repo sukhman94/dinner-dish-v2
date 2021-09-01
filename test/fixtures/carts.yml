@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  session_id: MyString
+  item: one
+  quantity: 1
+  price: 1
+
+two:
+  session_id: MyString
+  item: two
+  quantity: 1
+  price: 1
