@@ -1,7 +1,7 @@
 <div class="holder">
   <div class="parent">
     <h3>Sign Up</h3>
-    <%= # render 'layouts/notification' %>
+    <%= render 'layouts/notification' %>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name),:html => {:class => 'signup-form'}) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
       <div>

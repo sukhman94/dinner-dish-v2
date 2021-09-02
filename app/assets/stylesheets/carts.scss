@@ -1,0 +1,74 @@
+// Place all the styles related to the carts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+sc.table {
+	>tbody {
+		>tr {
+			>td {
+				vertical-align: middle;
+			}
+		}
+	}
+}
+.table {
+	>tfoot {
+		>tr {
+			>td {
+				vertical-align: middle;
+			}
+		}
+	}
+}
+@media screen and (max-width: 600px) {
+	table#cart {
+		tbody {
+			td {
+				.form-control {
+					width: 20%;
+					display: inline !important;
+				}
+				display: block;
+				padding: .6rem;
+				min-width: 320px;
+				&:before {
+					content: attr(data-th);
+					font-weight: bold;
+					display: inline-block;
+					width: 8rem;
+				}
+			}
+			tr {
+				td {
+					&:first-child {
+						background: #333;
+						color: #fff;
+					}
+				}
+			}
+		}
+		thead {
+			display: none;
+		}
+		tfoot {
+			td {
+				display: block;
+				.btn {
+					display: block;
+				}
+			}
+		}
+	}
+	.actions {
+		.btn {
+			width: 36%;
+			margin: 1.5em 0;
+		}
+		.btn-info {
+			float: left;
+		}
+		.btn-danger {
+			float: right;
+		}
+	}
+}

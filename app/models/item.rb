@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   has_many :categories, through: :category_items, dependent: :destroy
 
   has_many :order_items
+  has_many :carts
   belongs_to :restaurant
   has_many_attached :item_image
 
