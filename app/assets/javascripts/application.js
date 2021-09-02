@@ -14,6 +14,18 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery3
+//= require bootstrap-select
 //= require popper
 //= require bootstrap
 //= require_tree .
+
+$(document).ready(function () {
+  var banner = $("#wrapper")
+  var button = $("#menu-toggle")
+
+  // handle click and add class
+  button.on("click", () => {
+    // alert("adfasf")
+    banner.toggleClass("toggled")
+  })
+});
