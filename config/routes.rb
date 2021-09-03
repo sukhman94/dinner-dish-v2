@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
   end
   resources :restaurants, except: :show
-  devise_for :users
+  devise_for :users, controllers: { sessions: 'custom_sessions' }
+  resource :order
   root 'welcome#index'
 end

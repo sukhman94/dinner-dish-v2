@@ -4,10 +4,10 @@ class Item < ApplicationRecord
   has_many :category_items, dependent: :destroy
   has_many :categories, through: :category_items, dependent: :destroy
 
-  has_many :order_items
-  has_many :carts
+  has_many :order_items, dependent: :destroy
+  has_many :carts, dependent: :destroy
   belongs_to :restaurant
-  has_many_attached :item_image
+  has_many_attached :item_image, dependent: :destroy
 
   enum status: {
     publish: 0,

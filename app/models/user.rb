@@ -1,8 +1,7 @@
 # frozen_string_literal: true
-
 class User < ApplicationRecord
-  has_many :order_details
-  has_many :restaurant, through: :order_details
+  has_many :order_details, dependent: :destroy
+  has_many :restaurant, through: :order_details, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable

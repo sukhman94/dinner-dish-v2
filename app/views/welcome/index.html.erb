@@ -20,7 +20,8 @@
 				<div class="pull-right">
 				<%= form_for(@cart, remote: true) do |f| %>
 					<%= f.hidden_field :item_id, value: product.id %>
-					<%= f.hidden_field :price, value: product.id %>
+					<%= f.hidden_field :price, value: product.price %>
+					<%= f.hidden_field :restaurant_id, value: product.restaurant_id %>
 					<h5><%= product.price %></h5>
 					<div class="form-group">
 						<%= f.text_field :quantity, value: 1, min: 1, class: 'form-control' %>

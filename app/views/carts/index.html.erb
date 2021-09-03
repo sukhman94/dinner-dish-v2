@@ -1,4 +1,5 @@
 <div class="container-fluid w-75 mx-auto sc mt-5 pt-5">
+<% if @items.length > 0 %>
 <h2 class="text-center mt-5">Cart</h2>
 	<table id="cart" class="table table-hover table-condensed">
     				<thead>
@@ -11,42 +12,7 @@
 						</tr>
 					</thead>
 					<tbody>
-          <% if @items.each %>
-
-
-            <% @items.each do |cart_item| %>
-						<tr>
-					<%= form_tag(controller: "carts", action: "update", remote: true) do %>
-
-							<td data-th="Product">
-								<div class="row">
-									<div class="col-sm-2 hidden-xs"><img class="w-100" src=<%= url_for(cart_item.item.item_image[0]) %> alt="..." class="img-responsive"/>
-
-                  </div>
-									<div class="col-sm-10">
-										<h4 class="nomargin"><%= cart_item.item.name %></h4>
-										<p><%= cart_item.item.description %></p>
-									</div>
-								</div>
-							</td>
-							<td data-th="Price">Rs. <%= cart_item.item.price %></td>
-							<td data-th="Quantity">
-                <%= number_field_tag :quantity, cart_item.quantity, min: 1, class: 'form-control text-center' %>
-                <%= hidden_field_tag :id, cart_item.id %>
-
-							</td>
-							<td data-th="Subtotal" class="text-center">Rs. <%= cart_item.quantity.to_i * cart_item.item.price.to_i %></td>
-							<td class="actions" data-th="">
-                <%= button_tag type: 'submit', class: "btn btn-info btn-sm" do %>
-                  <i class="fa fa-refresh" aria-hidden="true"></i>
-                <% end %>
-                <%= link_to '', cart_item, method: :delete, data: { confirm: 'Are you sure you want to delete?' }, class:"fa fa-trash-o btn btn-danger btn-sm" %>
-							</td>
-              <% end %>
-						</tr>
-            <% @total = cart_item.quantity.to_i * cart_item.item.price.to_i %>
-            <% end %>
-          <% end %>
+            <%= render 'cart' %>
 					</tbody>
 
 					<tfoot>
@@ -61,4 +27,7 @@
 						</tr>
 					</tfoot>
 				</table>
+        <% else %>
+        <%= render 'emptycart' %>
+<% end %>
 </div>
