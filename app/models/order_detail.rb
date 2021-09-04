@@ -20,15 +20,16 @@ class OrderDetail < ApplicationRecord # rubocop:disable Style/Documentation
     order_id = self[:id]
     user_id = self[:user_id]
     Cart.where(session_id: user_id).each do |cart|
-      order_item = OrderItem.first_or_initialize(
+      order_item = OrderItem.create(
         order_detail_id: order_id,
         item_id: cart.item_id,
         quantity: cart.quantity,
         price: cart.price
       )
       order_item.save!
+      cart.destroy
     end
-    Cart.where(session_id: user_id).destroy_all
   end
   # rubocop:enable Metrics/MethodLength
+
 end

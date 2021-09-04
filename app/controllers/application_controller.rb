@@ -7,6 +7,11 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
   include OrderHelper
 
+  def content_not_found
+    render file: "#{Rails.root}/public/404", layout: true, status: :not_found
+  end
+
+
   protected
 
   def configure_permitted_parameters

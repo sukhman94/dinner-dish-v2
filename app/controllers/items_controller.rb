@@ -52,7 +52,8 @@ class ItemsController < ApplicationController # rubocop:disable Style/Documentat
 
   # Use callbacks to share common setup or constraints between actions.
   def set_items
-    @item = Item.find(params[:id])
+    @item = Item.find_by(id: params[:id])
+    content_not_found unless @item.present?
   end
 
   def gets_cat_res

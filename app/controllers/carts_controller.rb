@@ -30,7 +30,8 @@ class CartsController < ApplicationController # rubocop:disable Style/Documentat
   end
 
   def destroy
-    @cart_item = Cart.find(params[:id])
+    @cart_item = Cart.find_by(id: params[:id])
+    content_not_found unless @cart_item.present?
     @cart_item.destroy
     redirect_to carts_path
   end
