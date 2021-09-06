@@ -1115,92 +1115,43 @@ p.first {
 }
 
 .restaurats_all_welcome {
-  .main {
-    width: 50vw;
-    height: auto;
+  .card {
+    width: 251px;
+    border: 1px solid #efefef;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .card__blur {
+    filter: blur(5px);
+    overflow: hidden;
+  }
+
+  .card h4 {
+    font-size: 1.6em;
+  }
+
+  .card__logo {
     margin: auto;
-    background-color: white;
-    position: relative;
-    top: 15vh;
-    padding: 1.5vw
+    width: 120px;
+    transform: translateY(-50%);
+    margin-bottom: -40px;
   }
 
-  .head {
-    font-size: 2vw
+  .card__info {
+    text-align: center;
   }
 
-  .head .close {
-    font-size: 2vw
+  .card__info p {
+    font-size: 10px;
   }
 
-  .pica {
-    height: 10vw;
-    width: 10vw
-  }
-
-  .fa-star,
-  .fa-star-half-o {
-    color: gold
-  }
-
-  .lower {
-    width: 20vw;
-    border-radius: 2vw;
-    color: #fff;
-    background-color: white
-  }
-
-  .lower:hover {
-    color: white
-  }
-
-  .btn {
-    color: #fff !important
-  }
-
-  tr {
-    border: 2px solid white
-  }
-
-  @media only screen and (max-width: 425px) {
-    .main {
-      width: 110vw;
-      height: 100vw
-    }
-
-    .head {
-      font-size: 5vw
-    }
-
-    .head .close {
-      font-size: 5vw
-    }
-
-    .rate {
-      font-size: 4vw
-    }
-
-    .pica {
-      height: 30vw;
-      width: 30vw;
-      position: relative;
-      right: 5vw
-    }
-
-    .upper {
-      width: 50vw
-    }
-
-    .u2 {
-      margin-top: 4vw
-    }
-
-    .lower {
-      width: 45vw;
-      position: relative;
-      right: 5vw;
-      font-size: 3vw
-    }
+  .card__footer {
+    background: red;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 10px 0;
+    font-weight: bold;
   }
 
 }

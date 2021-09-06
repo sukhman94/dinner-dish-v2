@@ -8,10 +8,10 @@ class ItemPolicy < ApplicationPolicy # rubocop:disable Style/Documentation
   end
 
   def edit?
-    user.admin?
+    user&.admin?
   end
 
   def index?
-    user.admin?
+    user&.admin?
   end
 end
