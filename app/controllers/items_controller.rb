@@ -5,7 +5,8 @@ class ItemsController < ApplicationController # rubocop:disable Style/Documentat
   before_action :gets_cat_res, only: %i[new edit]
 
   def index
-    @items = Item.all
+    @items = Item.page params[:page]
+    authorize @items
   end
 
   def create
@@ -14,6 +15,7 @@ class ItemsController < ApplicationController # rubocop:disable Style/Documentat
       flash[:notice] = 'Items Created Successfully'
       redirect_to items_path
     else
+      gets_cat_res
       render 'new'
     end
   end
@@ -27,13 +29,18 @@ class ItemsController < ApplicationController # rubocop:disable Style/Documentat
       flash[:notice] = 'Item Updated Successfully'
       redirect_to items_path
     else
+      gets_cat_res
       render 'edit'
     end
   end
 
-  def show; end
+  def show
+    @cart = Cart.new
+  end
 
-  def edit; end
+  def edit
+    authorize @item
+  end
 
   def destroy
     @item.destroy

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
-  <a class="navbar-brand" href="#">Dinner Dash</a>
+  <%= link_to 'Dinner Dash', root_path, class: "navbar-brand" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -26,6 +26,9 @@
         <li class="nav-item">
           <%= link_to 'Logout', destroy_user_session_path, class:"nav-link", method: :delete %>
         </li>
+        <li class="nav-item">
+        <a class="nav-link" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>
+      </li>
       <% else %>
         <li class="nav-item">
           <%= link_to 'Signup', new_user_registration_path, class:"nav-link" %>
@@ -34,9 +37,6 @@
           <%= link_to 'Login', new_user_session_path, class:"nav-link" %>
         </li>
       <% end %>
-      <li class="nav-item">
-        <a class="nav-link" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>
-      </li>
     </ul>
   </div>
 </nav>

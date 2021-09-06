@@ -1,10 +1,21 @@
 <div class="mx-auto my-5 py-5 w-100">
   <div class="card mx-auto" style="width: 18rem;">
-    <%= image_tag @item.item_image[0] %>
+    <%= item_avatar(@item, '100%x100%!') %>
     <div class="card-body">
       <h5 class="card-title"><%= @item.name %></h5>
       <p class="card-text"><%= @item.description %></p>
       <p><%= @item.price %></p>
+      <% if current_user.user? %>
+        <%= form_for(@cart, remote: true) do |f| %>
+          <%= f.hidden_field :item_id, value: @item.id %>
+          <%= f.hidden_field :price, value: @item.price %>
+          <%= f.hidden_field :restaurant_id, value: @item.restaurant_id %>
+          <div class="form-group">
+            <%= f.hidden_field :quantity, value: 1 %>
+          </div>
+          <%= f.submit "Add to cart", class: 'btn btn-primary btn-sm w-50' %>
+        <% end %>
+      <% end %>
     </div>
   </div>
   <div class="mx-auto w-100 text-center mt-5">
@@ -12,16 +23,15 @@
     <div class="container-fluid mt-5">
       <div class="row">
         <% @item.item_image.each do |image| %>
-
-            <div class="col-md-4 text-center">
-              <div class="mw-75">
-                <% if @item.item_image.count > 1 %>
-                  <%= link_to 'x', delete_image_attachment_item_url(image.id), method: :delete,
+          <div class="col-md-4 text-center">
+            <div class="mw-75">
+              <% if @item.item_image.count > 1 && current_user.admin? %>
+                <%= link_to 'x', delete_image_attachment_item_url(image.id), method: :delete,
                         data: { confirm: 'Are you sure?' }, class:"close delete_img" %>
-                <% end %>
-                <%= image_tag image, class:"w-100 mt-2" %>
-              </div>
+              <% end %>
+              <%= image_tag image, class:"w-100 mt-2" %>
             </div>
+          </div>
         <% end %>
       </div>
     </div>

@@ -7,32 +7,13 @@
     </div>
   </div>
 </div>
-<section>
+<section id="products">
   <h1>Products for sale</h1>
-
-<% @product.each do |product| %>
-	<div class="well">
-		<div class="row">
-			<div class="col-sm-8">
-				<h3><%= product.name %></h3>
-			</div>
-			<div class="col-sm-4">
-				<div class="pull-right">
-				<%= form_for(@cart, remote: true) do |f| %>
-					<%= f.hidden_field :item_id, value: product.id %>
-					<%= f.hidden_field :price, value: product.price %>
-					<%= f.hidden_field :restaurant_id, value: product.restaurant_id %>
-					<h5><%= product.price %></h5>
-					<div class="form-group">
-						<%= f.text_field :quantity, value: 1, min: 1, class: 'form-control' %>
-					</div>
-					<%= f.submit "Add to cart", class: 'btn btn-primary btn-sm' %>
-				<% end %>
-				</div>
-			</div>
-		</div>
-	</div>
-<% end %>
+  <%= render 'items' %>
+</section>
+<section id="restaurant" class="restaurats_all_welcome">
+<h1>Restaurants</h1>
+<%= render 'restaurants' %>
 </section>
 <section class="bg-about bg-section" id="about">
   <div class="container-fluid">
@@ -57,22 +38,13 @@
             </div>
           </div>
         </div>
-        <div class="hov-img">
-          <img src="https://res.cloudinary.com/dbte0ueti/image/upload/v1536951746/new/professional_staff.jpg" alt="Professional staff" class="hov-img-bottom img-fluid">
-          <div class="hov-img-top hov-img-slideup">
-            <div class="hov-img-text">
-              <h5>Professional staff</h5>
-              <p>For centuries Paris had taverns which served food at large common tables, but they were notoriously crowded, noisy, not very clean, and served food of dubious quality.</p>
-            </div>
-          </div>
-        </div>
       </div>
       <div class="col-sm-7">
         <div class="row ">
           <div class="restaurant-history slideanim text-center">
             <h3 class="section-heading">Restaurant Dinner Dash</h3>
             <p class="about-history first">The modern idea of a restaurant – as well as the term itself – appeared in Paris in the 18th century. For centuries Paris had taverns which served food at large common tables, but they were notoriously crowded, noisy, not very clean, and served food of dubious quality. In about 1765 a new kind of eating establishment, called a "Bouillon", was opened on rue des Poulies, near the Louvre, by a man named Boulanger.<br />
-               <br >
+              <br >
               It had separate tables, a menu, and specialized in soups made with a base of meat and eggs, which were said to be restaurants or, in English "restoratives". Other similar bouillons soon opened around Paris.
               In about 1765 a new kind of eating establishment, called a "Bouillon", was opened on rue des Poulies, near the Louvre, by a man named Boulanger.
               It had separate tables, a menu, and specialized in soups made with a base of meat and eggs, which were said to be restaurants or, in English "restoratives". Other similar bouillons soon opened around Paris.

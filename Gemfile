@@ -28,6 +28,7 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.7'
 gem 'image_processing', '~> 1.12', '>= 1.12.1'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails', '~> 4.4'
+gem 'kaminari', '~> 1.2', '>= 1.2.1'
 gem 'pundit', '~> 2.1', '>= 2.1.1'
 
 # Use Redis adapter to run Action Cable in production

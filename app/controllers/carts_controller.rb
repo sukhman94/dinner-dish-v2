@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class CartsController < ApplicationController # rubocop:disable Style/Documentation
-  def new; end
-
   def index
     @items = Cart.joins(:item).where(session_id: session_id)
   end

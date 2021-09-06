@@ -14,7 +14,8 @@
         </td>
         <td data-th="Price">Rs. <%= cart_item.item.price %></td>
         <td data-th="Quantity">
-          <%= number_field_tag :quantity, cart_item.quantity, min: 1, class: 'form-control text-center' %>
+          <small id="div1"></small>
+          <%= number_field_tag :quantity, cart_item.quantity, min: 1, class: 'form-control text-center', name: "quantity" %>
           <%= hidden_field_tag :id, cart_item.id %>
         </td>
         <td data-th="Subtotal" class="text-center">Rs. <%= cart_item.quantity.to_i * cart_item.item.price.to_i %></td>

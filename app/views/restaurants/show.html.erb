@@ -1,0 +1,21 @@
+<div class="container restaurant_show pt-5 mt-5">
+  <div class="row">
+  <h1>Filter By:</h1>
+  <%= collection_select(:category, :id, @categories, :id, :name, {}, { :class=>"selectpicker w-100", "data-live-search" => "true"} ) %>
+    <div class="col-sm-12 col-md-12 col-xs-12 no-padding">
+      <div class="restaurant-table">
+        <h1>
+          <div class="row">
+            <div class="col-sm-2 col-md-2 col-xs-2">
+              <%= restaurant_avatar(@restaurant) %>
+            </div>
+            <div class="col-sm-10 col-md-10 col-xs-10 ">
+              <%= @restaurant.name %>
+            </div>
+          </div>
+        </h1>
+          <div><%= render @items %>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Item < ApplicationRecord
+class Item < ApplicationRecord # rubocop:disable Style/Documentation
   has_many :category_items, dependent: :destroy
   has_many :categories, through: :category_items, dependent: :destroy
 
@@ -8,6 +8,12 @@ class Item < ApplicationRecord
   has_many :carts, dependent: :destroy
   belongs_to :restaurant
   has_many_attached :item_image, dependent: :destroy
+
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :price, presence: true, numericality: { greater_than: 0 }
+
+  paginates_per 5
 
   enum status: {
     publish: 0,

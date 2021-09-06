@@ -32,6 +32,12 @@ class RestaurantsController < ApplicationController # rubocop:disable Style/Docu
 
   def edit; end
 
+  def show
+    @items = Item.where(restaurant_id: params[:id], status: 'publish')
+    @categories = Category.all
+    @cart = Cart.new
+  end
+
   def destroy
     @restaurant.destroy
     redirect_to restaurants_path

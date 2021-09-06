@@ -6,12 +6,20 @@ class OrderDetail < ApplicationRecord # rubocop:disable Style/Documentation
 
   has_many :order_items, dependent: :destroy
 
+  validates :phone, presence: true,
+                    numericality: true,
+                    length: { minimum: 10, maximum: 15 }
+
+  validates :address, presence: true
+
   enum status: {
     ordered: 0,
     paid: 1,
     cancelled: 2,
     completed: 3
   }
+
+  # paginates_per 5
 
   after_save :switch_data
 
@@ -31,5 +39,4 @@ class OrderDetail < ApplicationRecord # rubocop:disable Style/Documentation
     end
   end
   # rubocop:enable Metrics/MethodLength
-
 end

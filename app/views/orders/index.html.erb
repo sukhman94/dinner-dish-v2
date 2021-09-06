@@ -1,0 +1,39 @@
+<% if @orders %>
+  <div class="pt-5 w-50 mx-auto">
+    <h1 class="mt-5">Orders</h1>
+    <select class="selectpicker w-100" name="status" id="status">
+      <option value="ordered">Ordered</option>
+      <option value="paid">Paid</option>
+      <option value="cancelled">Cancelled</option>
+      <option value="completed">Complete</option>
+    </select>
+    <table class="table table-striped table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>Order id.</th>
+          <th>Order by</th>
+          <th>Restaurant Name</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr class="<%= order.status %>">
+            <td>DD - <%= order.id %></td>
+            <td><%= order.user.full_name %></td>
+            <td><%= order.restaurant.name %></td>
+            <td><%= order.status %></td>
+            <td><%= link_to 'Details', order_path(order) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+  </div>
+  <div class="pags d-flex justify-content-center">
+    <%= paginate @orders %>
+  </div>
+<% else %>
+  <%= render 'emptyorder' %>
+<% end %>
