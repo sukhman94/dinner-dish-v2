@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ItemsController < ApplicationController # rubocop:disable Style/Documentation
+class ItemsController < ApplicationController
   before_action :set_items, only: %i[show edit update destroy]
   before_action :gets_cat_res, only: %i[new edit]
 
@@ -22,6 +22,7 @@ class ItemsController < ApplicationController # rubocop:disable Style/Documentat
 
   def new
     @item = Item.new
+    authorize @item
   end
 
   def update
@@ -60,7 +61,7 @@ class ItemsController < ApplicationController # rubocop:disable Style/Documentat
   # Use callbacks to share common setup or constraints between actions.
   def set_items
     @item = Item.find_by(id: params[:id])
-    content_not_found unless @item.present?
+    content_not_found if @item.blank?
   end
 
   def gets_cat_res

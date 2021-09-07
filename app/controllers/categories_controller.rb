@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
-class CategoriesController < ApplicationController # rubocop:disable Style/Documentation
+class CategoriesController < ApplicationController
   before_action :set_category, only: %i[edit update destroy]
   def index
     @categories = Category.all
+    authorize @categories
   end
 
   def create
@@ -18,6 +19,7 @@ class CategoriesController < ApplicationController # rubocop:disable Style/Docum
 
   def new
     @category = Category.new
+    authorize @category
   end
 
   def update
@@ -29,7 +31,9 @@ class CategoriesController < ApplicationController # rubocop:disable Style/Docum
     end
   end
 
-  def edit; end
+  def edit
+    authorize @category
+  end
 
   def destroy
     @category.destroy
@@ -42,7 +46,7 @@ class CategoriesController < ApplicationController # rubocop:disable Style/Docum
   # Use callbacks to share common setup or constraints between actions.
   def set_category
     @category = Category.find_by(id: params[:id])
-    content_not_found unless @category.present?
+    content_not_found if @category.blank?
   end
 
   # Only allow a list of trusted parameters through.

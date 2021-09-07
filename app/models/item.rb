@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Item < ApplicationRecord # rubocop:disable Style/Documentation
+class Item < ApplicationRecord
   has_many :category_items, dependent: :destroy
   has_many :categories, through: :category_items, dependent: :destroy
 

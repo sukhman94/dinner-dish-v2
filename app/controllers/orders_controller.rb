@@ -1,21 +1,24 @@
 # frozen_string_literal: true
 
-class OrdersController < ApplicationController # rubocop:disable Style/Documentation
+class OrdersController < ApplicationController
   def index
     @orders = if current_user.admin?
                 OrderDetail.page params[:page]
               else
                 OrderDetail.where(user_id: current_user.id).page params[:page]
               end
+    # byebug
+    authorize @orders
   end
 
   def new
     @order = OrderDetail.new
+    authorize @order
   end
 
   def create
-    @order = OrderDetail.create(order_params)
-    @order.total = total_amount.to_i
+    @order = authorize OrderDetail.create(order_params)
+    # @order.total = total_amount.to_i
     if @order.save
       flash[:notice] = 'Your Order has been placed Successfully'
       redirect_to root_path

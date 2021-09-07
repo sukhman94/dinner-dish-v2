@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
-class RestaurantsController < ApplicationController # rubocop:disable Style/Documentation
+class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: %i[show edit update destroy]
 
   def index
     @restaurants = Restaurant.all
+    authorize @restaurants
   end
 
   def create
@@ -19,6 +20,7 @@ class RestaurantsController < ApplicationController # rubocop:disable Style/Docu
 
   def new
     @restaurant = Restaurant.new
+    authorize @restaurant
   end
 
   def update
@@ -30,7 +32,9 @@ class RestaurantsController < ApplicationController # rubocop:disable Style/Docu
     end
   end
 
-  def edit; end
+  def edit
+    authorize @restaurant
+  end
 
   def show
     @items = Item.where(restaurant_id: params[:id], status: 'publish')
@@ -39,6 +43,7 @@ class RestaurantsController < ApplicationController # rubocop:disable Style/Docu
   end
 
   def destroy
+    authorize @restaurant
     @restaurant.destroy
     redirect_to restaurants_path
   end
@@ -48,7 +53,7 @@ class RestaurantsController < ApplicationController # rubocop:disable Style/Docu
   # Use callbacks to share common setup or constraints between actions.
   def set_restaurant
     @restaurant = Restaurant.find_by(id: params[:id])
-    content_not_found unless @restaurant.present?
+    content_not_found if @restaurant.blank?
   end
 
   # Only allow a list of trusted parameters through.

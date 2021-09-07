@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
-class OrderDetail < ApplicationRecord # rubocop:disable Style/Documentation
+class OrderDetail < ApplicationRecord
   belongs_to :user
   belongs_to :restaurant
+  before_validation :total
+  after_commit :switch_data
 
   has_many :order_items, dependent: :destroy
 
@@ -19,15 +21,12 @@ class OrderDetail < ApplicationRecord # rubocop:disable Style/Documentation
     completed: 3
   }
 
-  # paginates_per 5
+  paginates_per 5
 
-  after_save :switch_data
-
-  # rubocop:disable Metrics/MethodLength
   def switch_data
     order_id = self[:id]
     user_id = self[:user_id]
-    Cart.where(session_id: user_id).each do |cart|
+    Cart.where(session_id: user_id).find_each do |cart|
       order_item = OrderItem.create(
         order_detail_id: order_id,
         item_id: cart.item_id,
@@ -38,5 +37,8 @@ class OrderDetail < ApplicationRecord # rubocop:disable Style/Documentation
       cart.destroy
     end
   end
-  # rubocop:enable Metrics/MethodLength
+
+  def total
+    self[:total] = Cart.where(session_id: user.id).sum('quantity*price')
+  end
 end

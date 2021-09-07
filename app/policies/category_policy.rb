@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ItemPolicy < ApplicationPolicy
+class CategoryPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
@@ -16,6 +16,10 @@ class ItemPolicy < ApplicationPolicy
   end
 
   def new?
+    user&.admin?
+  end
+
+  def destroy?
     user&.admin?
   end
 end

@@ -25,7 +25,7 @@
           <% if @order_item.first.order_detail.created_at.strftime('%Q') != @order_item.first.order_detail.updated_at.strftime('%Q') %>
             <div class="info-date">updated at : <%= @order_item.first.order_detail.updated_at.to_formatted_s(:long_ordinal) %></div>
           <% end %>
-        <%= render 'form' %>
+          <%= render 'form' %>
         </div>
       </div>
       <div class="row">

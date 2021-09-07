@@ -1,14 +1,10 @@
 # frozen_string_literal: true
 
-class ItemPolicy < ApplicationPolicy
+class OrderDetailPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
     end
-  end
-
-  def edit?
-    user&.admin?
   end
 
   def index?
@@ -16,6 +12,10 @@ class ItemPolicy < ApplicationPolicy
   end
 
   def new?
-    user&.admin?
+    user&.user?
+  end
+
+  def create?
+    user&.user?
   end
 end

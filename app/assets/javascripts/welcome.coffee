@@ -23,17 +23,6 @@ $(document).on 'turbolinks:load', ->
     win.scroll()
     return
 
-  ### ***** Btn More-Less ***** ###
-
-  $('#more').click ->
-    $this = $(this)
-    $this.toggleClass 'more'
-    if $this.hasClass('more')
-      $this.text 'More'
-    else
-      $this.text 'Less'
-    return
-
   ### ***** Slideanim  ***** ###
 
   $(window).scroll ->
@@ -57,7 +46,7 @@ $(document).on 'turbolinks:load', ->
           return
       return
 
-    ### ***** Scroll to Top ***** ###
+  ### ***** Scroll to Top ***** ###
 
   $(window).scroll ->
     if $(this).scrollTop() >= 300
@@ -72,3 +61,13 @@ $(document).on 'turbolinks:load', ->
 
 
 
+  ### ***** Btn More-Less ***** ###
+
+  $('#more').click ->
+    $this = $(this)
+    $this.toggleClass 'more'
+    if $this.hasClass('more')
+      $this.text 'More'
+    else
+      $this.text 'Less'
+    return

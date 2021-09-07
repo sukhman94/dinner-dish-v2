@@ -28,6 +28,7 @@
               <%# <input class="order-form-input" placeholder="Last"> %>
               <%= f.text_field :phone, class:"order-form-input", placeholder: "Phone", require: true  %>
               <%= f.hidden_field :user_id, value: current_user.id  %>
+              <%= f.hidden_field :total, value: 0  %>
               <%= f.hidden_field :restaurant_id, value: restaurant_ids  %>
             </div>
           </div>

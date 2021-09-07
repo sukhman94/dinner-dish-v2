@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class WelcomeController < ApplicationController # rubocop:disable Style/Documentation
+class WelcomeController < ApplicationController
   def index
     @product = Item.where(status: 'publish')
     @cart = Cart.new
