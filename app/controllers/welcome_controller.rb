@@ -2,7 +2,8 @@
 
 class WelcomeController < ApplicationController # rubocop:disable Style/Documentation
   def index
-    @product = Item.all
+    @product = Item.where(status: 'publish')
     @cart = Cart.new
+    @restaurants = Restaurant.all
   end
 end

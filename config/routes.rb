@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :carts
-  post '/updatecart', to: 'carts#update'
+  resources :carts, only: %i[index create update destroy]
   resources :categories, except: :show
   resources :items do
     member do
       delete :delete_image_attachment
     end
   end
-  resources :restaurants, except: :show
-  devise_for :users
+  resources :restaurants
+  devise_for :users, controllers: { sessions: 'custom_sessions' }
+  resources :orders
   root 'welcome#index'
+  post '/updatecart', to: 'carts#update'
 end

@@ -1,0 +1,24 @@
+<ul class="text-left items_by_cat">
+  <li class="<% item.categories.each do |item| %>
+      <%= item.id %>
+    <% end %>"
+  >
+
+    <label class="circle-img d-flex float-left mr-2"><%= item_avatar(item, '50x50!') %></label>
+    <label><%= item.name %></label>
+    <label class="desc"><%= item.description if item.description %></label>
+    <label>Rs. <%= item.price %></label>
+    <% item.categories.each do |item| %>
+      <span class="badge badge-success my-2"><%= item.name %></span>
+    <% end %>
+    <%= form_for(@cart, remote: true) do |f| %>
+      <%= f.hidden_field :item_id, value: item.id %>
+      <%= f.hidden_field :price, value: item.price %>
+      <%= f.hidden_field :restaurant_id, value: item.restaurant_id %>
+      <div class="form-group">
+        <%= f.hidden_field :quantity, value: 1 %>
+      </div>
+      <%= f.submit "Add to cart", class: 'btn btn-primary btn-sm w-25' %>
+    <% end %>
+  </li>
+</ul>

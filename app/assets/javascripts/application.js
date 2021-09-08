@@ -29,3 +29,22 @@ $(document).ready(function () {
     banner.toggleClass("toggled")
   })
 });
+
+$(document).ready(function() {
+  $('select#category_id').bind('change', function() {
+    val = $(this).val()
+    $('.items_by_cat li:not(.'+val+')').hide();
+    $('.items_by_cat li.'+val).show();
+  });
+});
+
+$(document).ready(function() {
+  setTimeout(function() {
+    $('.noti').fadeOut('fast');
+  }, 3000);
+  $('select#status').bind('change', function() {
+    val = $(this).val()
+    $('tbody tr:not(.'+val+')').hide();
+    $('tbody tr.'+val).show();
+  });
+});

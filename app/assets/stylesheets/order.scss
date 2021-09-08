@@ -1,0 +1,114 @@
+// Place all the styles related to the order controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.order-form {
+	.container {
+		color: #4c4c4c;
+		padding: 20px;
+		box-shadow: 0 0 10px 0 rgba(0, 0, 0, .1);
+	}
+}
+.order-form-label {
+	margin: 8px 0 0 0;
+	font-size: 14px;
+	font-weight: bold;
+}
+.order-form-input {
+	width: 100%;
+	padding: 8px 8px;
+	border-width: 1px !important;
+	border-style: solid !important;
+	border-radius: 3px !important;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	line-height: 1.2em;
+	background-color: transparent;
+	border-color: #cccccc;
+}
+.btn-submit {
+	&:hover {
+		background-color: #090909 !important;
+	}
+}
+
+
+// single order page
+.p-cart{
+	.purchase {
+		position: relative;
+		background-color: #FFF;
+		min-height: 680px;
+		padding: 15px;
+		font-family: Times New Roman;
+		header {
+			padding: 0px 0px 0px 0px;
+			margin-bottom: 0px;
+			border-bottom: 1px solid #3989c6;
+			img {
+				max-width: 200px;
+				margin-top: 0;
+				margin-bottom: 0;
+			}
+		}
+		.company-details {
+			text-align: right;
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+		main {
+			padding: 0px 0px;
+			margin-bottom: 0px;
+		}
+		.to-details {
+			text-align: left;
+		}
+		.to-name {
+			font-weight: bold;
+			.to-address {
+				.to-city {
+					margin-top: 0;
+					margin-bottom: 0;
+				}
+			}
+		}
+		.purchase-info {
+			text-align: right;
+		}
+	}
+	.purchase-info {
+		.info-code {
+			font-weight: bold;
+			.info-date {
+				margin-top: 0;
+				margin-bottom: 0;
+			}
+		}
+	}
+	.table {
+		thead {
+			th {
+				margin: 0 !important;
+				padding-top: 0 !important;
+				padding-bottom: 0 !important;
+			}
+		}
+		td {
+			margin: 0 !important;
+			padding-top: 0 !important;
+			padding-bottom: 0 !important;
+			border: none;
+		}
+		.blank-row {
+			height: 25px !important;
+			background-color: #FFFFFF;
+			border: none;
+		}
+		tbody {
+			min-height: 1000px !important;
+		}
+	}
+
+}

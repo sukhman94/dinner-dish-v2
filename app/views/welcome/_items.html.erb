@@ -1,0 +1,44 @@
+<div class="container all_products">
+  <div id="demo" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <% @product.each_with_index do |product, index| %>
+        <div class="carousel-item <% if index == 0 %> active<% end %>">
+          <div class="card">
+            <div class="path"></div>
+            <div class="row">
+              <div class="col-md-6 text-center align-self-center">
+                <%= item_avatar(product, "100%x100%!") %>
+              </div>
+              <div class="col-md-6 info">
+                <div class="row title">
+                  <div class="col">
+                    <h2 class="text-left"><%= product.name %></h2>
+                  </div>
+                </div>
+                <p><%= product.description %></p>
+                <div class="row price"> <label class="radio"> <input type="radio" name="size1" value="small" checked> <span>
+                      <div class="row"></div>
+                      <div class="row">Rs. <%= product.price %></div>
+                    </a>
+                  </span> </label></div>
+            </div>
+          </div>
+          <div class="row lower">
+            <div class="col"> <a class="carousel-control-prev" href="#demo" data-slide="prev"><i class="fa fa-arrow-left"></i></a> <a class="carousel-control-next" href="#demo" data-slide="next"><i class="fa fa-arrow-right"></i></a> </div>
+            <%= form_for(@cart, remote: true) do |f| %>
+              <%= f.hidden_field :item_id, value: product.id %>
+              <%= f.hidden_field :price, value: product.price %>
+              <%= f.hidden_field :restaurant_id, value: product.restaurant_id %>
+              <div class="form-group">
+                <%= f.hidden_field :quantity, value: 1 %>
+              </div>
+              <div class="col text-right align-self-center w-100"> <%= f.submit "Add to cart", class: 'btn w-100' %> </div>
+
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+</div>

@@ -32,6 +32,12 @@ class RestaurantsController < ApplicationController # rubocop:disable Style/Docu
 
   def edit; end
 
+  def show
+    @items = Item.where(restaurant_id: params[:id], status: 'publish')
+    @categories = Category.all
+    @cart = Cart.new
+  end
+
   def destroy
     @restaurant.destroy
     redirect_to restaurants_path
@@ -41,7 +47,8 @@ class RestaurantsController < ApplicationController # rubocop:disable Style/Docu
 
   # Use callbacks to share common setup or constraints between actions.
   def set_restaurant
-    @restaurant = Restaurant.find(params[:id])
+    @restaurant = Restaurant.find_by(id: params[:id])
+    content_not_found unless @restaurant.present?
   end
 
   # Only allow a list of trusted parameters through.

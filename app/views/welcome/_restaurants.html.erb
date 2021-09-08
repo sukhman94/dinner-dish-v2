@@ -1,0 +1,22 @@
+<% @restaurants.each do |restaurant| %>
+  <div class="main z-depth-4">
+    <p class="head"><%= restaurant.name %> </p>
+    <table class="table">
+      <tr>
+        <td>
+          <p class="rate d-none">Ratings - <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i> <a href="#"> 4,321 reviews</a></p>
+          <%= link_to "View Products", restaurant_path(restaurant), color: "waves-effect waves-light btns upper" %>
+        </td>
+        <td> <img class="responsive-img pica right" src="<%= url_for(restaurant.avatar) if restaurant.avatar.attached? %>" alt=""> </td>
+      </tr>
+      <tr>
+        <td>
+          <center><a class="waves-effect waves-light btns lower">RESERVE A TABLE</a></center>
+        </td>
+        <td>
+          <center><a class="waves-effect waves-light btns lower">TABLES FOR TOMORROW</a></center>
+        </td>
+      </tr>
+    </table>
+  </div>
+<% end %>

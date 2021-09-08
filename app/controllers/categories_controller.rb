@@ -41,7 +41,8 @@ class CategoriesController < ApplicationController # rubocop:disable Style/Docum
 
   # Use callbacks to share common setup or constraints between actions.
   def set_category
-    @category = Category.find(params[:id])
+    @category = Category.find_by(id: params[:id])
+    content_not_found unless @category.present?
   end
 
   # Only allow a list of trusted parameters through.

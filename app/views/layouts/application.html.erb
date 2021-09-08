@@ -12,8 +12,10 @@
       <%= render "layouts/sidebar" %>
       <div id="page-content-wrapper">
         <%= render "layouts/navbar" %>
+        <div class="content">
         <%= render 'layouts/notification' %>
         <%= yield %>
+        </div>
         <%= render "layouts/footer" %>
       </div>
     </div>

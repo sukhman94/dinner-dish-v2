@@ -19,12 +19,12 @@
 
   <div class="form-group">
     <%= form.label :restaurant %>
-    <%= form.select :restaurant_id, options_for_select(@restaurant), {}, {:class=>"selectpicker w-100"} %>
+    <%= form.select :restaurant_id, options_for_select(@restaurant), {}, {:class=>"selectpicker w-100", "data-live-search" => "true"} if @restaurant %>
   </div>
 
   <div class="form-group">
     <%= form.label :category_ids, "Select Category" %>
-    <%= form.select :category_ids, options_for_select(@categories, item.categories.ids), {}, {:multiple => true,:class=>"selectpicker w-100", "data-live-search" => "true", include_blank: false, include_hidden: false,} %>
+    <%= form.select :category_ids, options_for_select(@categories, item.categories.ids), {include_blank: false, include_hidden: false}, {:multiple => true, :class=>"selectpicker w-100", "data-live-search" => "true"} if @categories %>
   </div>
 
   <div class="form-group">

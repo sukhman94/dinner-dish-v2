@@ -3,6 +3,3 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 # for toggling sidebar
 
-# $(document).on 'click', '.form-link', (e) ->
-#   e.preventDefault() # prevent link from being followed
-#   $('#wrapper').toggleClass 'toggled'

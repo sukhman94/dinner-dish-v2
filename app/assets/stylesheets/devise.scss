@@ -102,110 +102,111 @@ form{
 			margin-bottom: 0;
 		}
 	}
-}
-.signup-form {
-	display: block;
-	border-bottom: 1px dashed #ccc;
-	margin-left: 20px;
-	margin-right: 20px;
-	>div {
-		margin: 20px;
-		padding: 10px;
-		border-bottom: 1px solid #ccc;
-		position: relative;
-		&::before {
-			content: "\f007";
-			font-weight: 900;
-			font-family: "FontAwesome";
-			position: absolute;
+	.signup-form {
+		display: block;
+		border-bottom: 1px dashed #ccc;
+		margin-left: 20px;
+		margin-right: 20px;
+		>div {
+			margin: 20px;
+			padding: 10px;
+			border-bottom: 1px solid #ccc;
+			position: relative;
+			&::before {
+				content: "\f007";
+				font-weight: 900;
+				font-family: "FontAwesome";
+				position: absolute;
+				color: #777;
+				left: -1px;
+			}
+			&:nth-child(2) {
+				&:before {
+					content: "\f2b6";
+				}
+			}
+			&:nth-child(3) {
+				&:before {
+					content: "\f023";
+				}
+			}
+			&:nth-child(4) {
+				&:before {
+					content: "\f023";
+				}
+			}
+		}
+		div {
+			input {
+				border: none;
+				font-family: "Work Sans", sans-serif;
+				font-size: 15px;
+				margin-left: 10px;
+			}
+		}
+		.private-inp {
+			border: none;
+			font-family: "work sans",sans-serif;
+			display: block;
+			margin: auto;
+			background: #2196f3;
+			width: 90%;
+			padding: 10px;
+			border-radius: 7px;
+			margin-bottom: 10px;
+			color: white;
+			font-size: 15px;
+			font-weight: bold;
+			cursor: pointer;
+		}
+		p {
+			margin: 20px;
+			text-align: center;
+			font-size: 12px;
 			color: #777;
-			left: -1px;
-		}
-		&:nth-child(2) {
-			&:before {
-				content: "\f2b6";
-			}
-		}
-		&:nth-child(3) {
-			&:before {
-				content: "\f023";
-			}
-		}
-		&:nth-child(4) {
-			&:before {
-				content: "\f023";
+			padding: 15px;
+			a {
+				text-decoration: none;
+				font-weight: bold;
+				color: #2196f3ed;
 			}
 		}
 	}
 	div {
 		input {
-			border: none;
-			font-family: "Work Sans", sans-serif;
-			font-size: 15px;
-			margin-left: 10px;
-		}
-	}
-	.private-inp {
-		border: none;
-		font-family: "work sans",sans-serif;
-		display: block;
-		margin: auto;
-		background: #2196f3;
-		width: 90%;
-		padding: 10px;
-		border-radius: 7px;
-		margin-bottom: 10px;
-		color: white;
-		font-size: 15px;
-		font-weight: bold;
-		cursor: pointer;
-	}
-	p {
-		margin: 20px;
-		text-align: center;
-		font-size: 12px;
-		color: #777;
-		padding: 15px;
-		a {
-			text-decoration: none;
-			font-weight: bold;
-			color: #2196f3ed;
-		}
-	}
-}
-div {
-	input {
-		+ {
-			.border {
-				position: absolute;
-				left: 50%;
-				bottom: -1px;
-				background-color: #3498db;
-				height: 1px;
-				width: 0;
-				transition: .3s;
-				display: block;
-			}
-		}
-		&:focus {
 			+ {
 				.border {
-					width: 100%;
-					left: 0;
+					position: absolute;
+					left: 50%;
+					bottom: -1px;
+					background-color: #3498db;
+					height: 1px;
+					width: 0;
+					transition: .3s;
+					display: block;
+				}
+			}
+			&:focus {
+				+ {
+					.border {
+						width: 100%;
+						left: 0;
+					}
 				}
 			}
 		}
 	}
-}
-.parent {
-	h4 {
-		text-align: center;
-		color: #777;
+	.parent {
+		h4 {
+			text-align: center;
+			color: #777;
+		}
 	}
-}
-:focus {
-	&::placeholder {
-		opacity: 0;
-		transition: .5s;
+	:focus {
+		&::placeholder {
+			opacity: 0;
+			transition: .5s;
+		}
 	}
+
 }

@@ -1,11 +1,15 @@
 # frozen_string_literal: true
 
 module ApplicationHelper # rubocop:disable Style/Documentation
+  def browser_session
+    request.session[:session_id]
+  end
+
   def session_id
     if user_signed_in?
       current_user.id
     else
-      request.session[:session_id]
+      browser_session.to_s
     end
   end
 
@@ -16,5 +20,10 @@ module ApplicationHelper # rubocop:disable Style/Documentation
     else
       false
     end
+  end
+
+  def restaurant_ids
+    @items = Cart.joins(:item).where(session_id: session_id).first&.item
+    @items&.restaurant_id
   end
 end
