@@ -263,6 +263,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    stub_protected_environments (0.1.1)
     thor (1.1.0)
     thread_safe (0.3.6)
     thread_safe (0.3.6-java)
@@ -327,6 +328,7 @@ DEPENDENCIES
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
+  stub_protected_environments
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
