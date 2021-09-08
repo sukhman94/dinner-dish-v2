@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-class ItemsController < ApplicationController # rubocop:disable Style/Documentation
+class ItemsController < ApplicationController
   before_action :set_items, only: %i[show edit update destroy]
   before_action :gets_cat_res, only: %i[new edit]
+  before_action :auth
 
   def index
-    @items = Item.page params[:page]
-    authorize @items
+    @items = authorize Item.page params[:page]
   end
 
   def create
@@ -21,7 +21,7 @@ class ItemsController < ApplicationController # rubocop:disable Style/Documentat
   end
 
   def new
-    @item = Item.new
+    @item = authorize Item.new
   end
 
   def update
@@ -44,14 +44,15 @@ class ItemsController < ApplicationController # rubocop:disable Style/Documentat
 
   def destroy
     @item.destroy
-    flash[:alert] = 'Item Deleted Successfully'
-    redirect_to items_path
+    flash.now[:alert] = 'Item Deleted Successfully'
+    respond_to do |format|
+      format.js { render 'items.js.erb' }
+    end
   end
 
   # to delete single image
   def delete_image_attachment
-    @item_image = ActiveStorage::Attachment.find(params[:id])
-    @item_image.purge
+    @item_image = ActiveStorage::Attachment.find(params[:id]).purge
     redirect_back(fallback_location: request.referer)
   end
 
@@ -59,17 +60,21 @@ class ItemsController < ApplicationController # rubocop:disable Style/Documentat
 
   # Use callbacks to share common setup or constraints between actions.
   def set_items
-    @item = Item.find_by(id: params[:id])
-    content_not_found unless @item.present?
+    @item = Item.where_id(params[:id])
+    content_not_found if @item.blank?
   end
 
   def gets_cat_res
-    @categories = Category.pluck(:name, :id)
-    @restaurant = Restaurant.pluck(:name, :id)
+    @categories = Category.plucked
+    @restaurant = Restaurant.plucked
   end
 
   # Only allow a list of trusted parameters through.
   def item_params
     params.require(:item).permit(:name, :description, :restaurant_id, :price, :status, item_image: [], category_ids: [])
+  end
+
+  def auth
+    authorize Item
   end
 end

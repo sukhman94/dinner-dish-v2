@@ -1,0 +1,15 @@
+<% if @items %>
+  <% @items.sort.each do |item| %>
+    <tr>
+      <td class="image-frame"><%= item_avatar(item, '50x50!') %></td>
+      <td><%= item.name %></td>
+      <td><%= item.description %></td>
+      <td><%= item.price %></td>
+      <td><%= item.status %></td>
+      <td><%= item.restaurant.name %></td>
+      <td class="text-center"><%= link_to 'Show', item_path(item) %></td>
+      <td class="text-center"><%= link_to 'Edit', edit_item_path(item) %></td>
+      <td class="text-center"><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure you want to delete?' }, remote: true %></td>
+    </tr>
+  <% end %>
+<% end %>

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ApplicationHelper # rubocop:disable Style/Documentation
+module ApplicationHelper
   def browser_session
     request.session[:session_id]
   end
@@ -14,16 +14,12 @@ module ApplicationHelper # rubocop:disable Style/Documentation
   end
 
   def current_order(id)
-    @avaliablity = Cart.where(session_id: session_id, item_id: id).count
-    if @avaliablity.zero?
-      true
-    else
-      false
-    end
+    avaliablity = Cart.where(session_id: session_id, item_id: id).count
+    avaliablity.zero?
   end
 
   def restaurant_ids
-    @items = Cart.joins(:item).where(session_id: session_id).first&.item
-    @items&.restaurant_id
+    items = Cart.joins(:item).where(session_id: session_id).first&.item
+    items&.restaurant_id
   end
 end

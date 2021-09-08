@@ -9,11 +9,11 @@
     </tr>
   </thead>
   <tbody>
-    <% @categories.each do |category| %>
+    <% @categories.sort.each do |category| %>
       <tr>
         <td><%= category.name %></td>
         <td class="text-center"><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td class="text-center"><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
+        <td class="text-center"><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure you want to delete?' }, remote: true %></td>
       </tr>
     <% end %>
   </tbody>
