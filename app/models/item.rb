@@ -13,7 +13,7 @@ class Item < ApplicationRecord
   validates :description, presence: true
   validates :price, presence: true, numericality: { greater_than: 0 }
 
-  paginates_per 5
+  paginates_per 15
 
   enum status: {
     publish: 0,

@@ -3,7 +3,6 @@
 class OrderDetail < ApplicationRecord
   belongs_to :user
   belongs_to :restaurant
-  before_validation :total
   after_commit :switch_data
 
   has_many :order_items, dependent: :destroy
@@ -21,7 +20,9 @@ class OrderDetail < ApplicationRecord
     completed: 3
   }
 
-  paginates_per 5
+  paginates_per 15
+
+  private
 
   def switch_data
     order_id = self[:id]
@@ -36,9 +37,5 @@ class OrderDetail < ApplicationRecord
       order_item.save!
       cart.destroy
     end
-  end
-
-  def total
-    self[:total] = Cart.where(session_id: user.id).sum('quantity*price')
   end
 end

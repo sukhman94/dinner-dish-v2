@@ -1,7 +1,8 @@
-
-  <% @items.each do |cart_item| %>
-    <tr>
-      <%= form_tag cart_path(cart_item), :method => :put do %>
+<% if @items %>
+  <% @total = 0 %>
+  <% @items.sort.each do |cart_item| %>
+    <%= form_for(:cart_item ,url: cart_path(cart_item), method: :put) do |f| %>
+      <tr>
         <td data-th="Product">
           <div class="row">
             <div class="col-sm-2 hidden-xs"><img class="w-100" src=<%= url_for(cart_item.item.item_image[0]) %> alt="..." class="img-responsive"/>
@@ -15,18 +16,18 @@
         <td data-th="Price">Rs. <%= cart_item.item.price %></td>
         <td data-th="Quantity">
           <small id="div1"></small>
-          <%= number_field_tag :quantity, cart_item.quantity, min: 1, class: 'form-control text-center', name: "quantity" %>
-          <%= hidden_field_tag :id, cart_item.id %>
+          <%= f.number_field :quantity, value: cart_item.quantity, min: 1, class: 'form-control text-center', name: "quantity" %>
+          <%= f.hidden_field :id, value: cart_item.id %>
         </td>
         <td data-th="Subtotal" class="text-center">Rs. <%= cart_item.quantity.to_i * cart_item.item.price.to_i %></td>
-        <td class="actions" data-th="">
-          <%= button_tag type: 'submit', class: "btn btn-info btn-sm" do %>
-            <i class="fa fa-refresh" aria-hidden="true"></i>
-          <% end %>
-          <%= link_to '', cart_item, method: :delete, data: { confirm: 'Are you sure you want to delete?' }, class:"fa fa-trash-o btn btn-danger btn-sm" %>
+        <td class="actions" data-th="action">
+          <%= f.submit '',type: 'submit', class: "btn btn-info btn-sm fa fa-refresh"  %>
+          <%= link_to '', cart_item, method: :delete, data: { confirm: 'Are you sure you want to delete?' }, class:"fa fa-trash-o btn btn-danger btn-sm", remote: true %>
         </td>
-      <% end %>
-    </tr>
-    <% @total = cart_item.quantity.to_i * cart_item.item.price.to_i %>
+      </tr>
+    <% end %>
+    <% @total = (cart_item.quantity.to_i * cart_item.item.price.to_i) + @total %>
   <% end %>
-
+<% else %>
+  <%= render 'emptycart' %>
+<% end %>

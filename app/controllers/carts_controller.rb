@@ -2,7 +2,7 @@
 
 class CartsController < ApplicationController
   def index
-    @items = Cart.joins(:item).where(session_id: session_id)
+    @items = Cart.current_user_cart(session_id)
   end
 
   # rubocop:disable Metrics/AbcSize
@@ -28,10 +28,16 @@ class CartsController < ApplicationController
   end
 
   def destroy
-    @cart_item = Cart.find_by(id: params[:id])
+    @cart_item = Cart.where_id(params[:id])
     content_not_found if @cart_item.blank?
-    @cart_item.destroy
-    redirect_to carts_path
+    if @cart_item.destroy
+      respond_to do |format|
+        format.js { render 'cart.js.erb' }
+      end
+    else
+      flash[:error] = 'Error in deleting items try again in a moment'
+      redirect_to carts_path
+    end
   end
 
   private

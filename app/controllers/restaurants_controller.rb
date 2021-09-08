@@ -45,14 +45,16 @@ class RestaurantsController < ApplicationController
   def destroy
     authorize @restaurant
     @restaurant.destroy
-    redirect_to restaurants_path
+    respond_to do |format|
+      format.js { render 'restaurant.js.erb' }
+    end
   end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_restaurant
-    @restaurant = Restaurant.find_by(id: params[:id])
+    @restaurant = Restaurant.where_id(params[:id])
     content_not_found if @restaurant.blank?
   end
 

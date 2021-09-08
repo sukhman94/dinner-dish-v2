@@ -2,6 +2,7 @@
 
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[edit update destroy]
+  before_action :auth
   def index
     @categories = Category.all
     authorize @categories
@@ -19,7 +20,6 @@ class CategoriesController < ApplicationController
 
   def new
     @category = Category.new
-    authorize @category
   end
 
   def update
@@ -31,26 +31,30 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def edit
-    authorize @category
-  end
+  def edit; end
 
   def destroy
     @category.destroy
-
-    redirect_to categories_path
+    flash.now[:notice] = 'Category Deleted Successfully'
+    respond_to do |format|
+      format.js { render 'category.js.erb' }
+    end
   end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_category
-    @category = Category.find_by(id: params[:id])
+    @category = Category.where_id(params[:id])
     content_not_found if @category.blank?
   end
 
   # Only allow a list of trusted parameters through.
   def category_params
     params.require(:category).permit(:name)
+  end
+
+  def auth
+    authorize Category
   end
 end

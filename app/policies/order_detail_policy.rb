@@ -8,7 +8,7 @@ class OrderDetailPolicy < ApplicationPolicy
   end
 
   def index?
-    user&.admin?
+    user&.admin? || user&.user?
   end
 
   def new?
