@@ -19,7 +19,7 @@ module ApplicationHelper
   end
 
   def restaurant_ids
-    items = Cart.joins(:item).where(session_id: session_id).first&.item
+    items = Cart.find_by(session_id: session_id)&.item
     items&.restaurant_id
   end
 end

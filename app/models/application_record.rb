@@ -4,5 +4,5 @@ class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
   include Plucked
-  include FindById
+  include Findable
 end

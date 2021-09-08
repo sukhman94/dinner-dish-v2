@@ -1,5 +1,5 @@
 <% if @items %>
-  <% @items.sort.each do |item| %>
+  <% @items.sort.reverse.each do |item| %>
     <tr>
       <td class="image-frame"><%= item_avatar(item, '50x50!') %></td>
       <td><%= item.name %></td>

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module FindById
+module Findable
   extend ActiveSupport::Concern
 
   included do

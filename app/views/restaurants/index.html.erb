@@ -11,7 +11,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @restaurants.sort.each do |restaurant| %>
+    <% @restaurants.sort.reverse.each do |restaurant| %>
       <tr>
         <td><%= restaurant_avatar(restaurant) %></td>
         <td><%= restaurant.name %></td>
