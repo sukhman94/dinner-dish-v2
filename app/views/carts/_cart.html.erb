@@ -1,7 +1,6 @@
 <% if @items %>
   <% @total = 0 %>
   <% @items.sort.each do |cart_item| %>
-    <%= form_for(:cart_item ,url: cart_path(cart_item), method: :put) do |f| %>
       <tr>
         <td data-th="Product">
           <div class="row">
@@ -15,18 +14,18 @@
         </td>
         <td data-th="Price">Rs. <%= cart_item.item.price %></td>
         <td data-th="Quantity">
-          <small id="div1"></small>
-          <%= f.number_field :quantity, value: cart_item.quantity, min: 1, class: 'form-control text-center', name: "quantity" %>
-          <%= f.hidden_field :id, value: cart_item.id %>
+        <%= form_for(:cart_item , url: cart_path(cart_item),html:{ class:"p-0"}, method: :patch, remote: true ) do |f| %>
+          <%= f.number_field :quantity, value: cart_item.quantity, min: 1, class: 'form-control text-center w-100', name:"quantity" %>
+          <%= f.hidden_field :id, value: cart_item.id, name: "id" %>
+          <%= button_tag '', type: 'submit', class: "btn btn-info btn-sm fa fa-refresh w-100"  %>
+        <% end %>
         </td>
         <td data-th="Subtotal" class="text-center">Rs. <%= cart_item.quantity.to_i * cart_item.item.price.to_i %></td>
         <td class="actions" data-th="action">
-
-          <%= button_tag '', type: 'submit', class: "btn btn-info btn-sm fa fa-refresh"  %>
           <%= link_to '', cart_item, method: :delete, data: { confirm: 'Are you sure you want to delete?' }, class:"fa fa-trash-o btn btn-danger btn-sm", remote: true %>
         </td>
       </tr>
-    <% end %>
+
     <% @total = (cart_item.quantity.to_i * cart_item.item.price.to_i) + @total %>
   <% end %>
 <% else %>

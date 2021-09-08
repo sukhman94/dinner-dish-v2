@@ -23,6 +23,7 @@ $(document).on 'turbolinks:load', ->
     win.scroll()
     return
 
+
   ### ***** Slideanim  ***** ###
 
   $(window).scroll ->

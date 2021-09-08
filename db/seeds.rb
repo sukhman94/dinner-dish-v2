@@ -37,43 +37,43 @@ Restaurant3 = Restaurant.create(name: 'Restaurant3', description: 'Description 3
 Restaurant4 = Restaurant.create(name: 'Restaurant4', description: 'Description 4')
 Restaurant5 = Restaurant.create(name: 'Restaurant5', description: 'Description 5')
 
-Item1 = Item.create(title: 'Pizza', description: 'This is pizza', price: 850, status: 'show',
+Item1 = Item.create(name: 'Pizza', description: 'This is pizza', price: 850, status: 'show',
                     category_ids: [Cat1.id, Cat4.id], restaurant_id: Restaurant1.id)
-Item2 = Item.create(title: 'Burger1', description: 'This is Burger1', price: 480, status: 'show',
+Item2 = Item.create(name: 'Burger1', description: 'This is Burger1', price: 480, status: 'show',
                     category_ids: [Cat1.id], restaurant_id: Restaurant1.id)
-Item3 = Item.create(title: 'Burger2', description: 'This is Burger2', price: 560, status: 'show',
+Item3 = Item.create(name: 'Burger2', description: 'This is Burger2', price: 560, status: 'show',
                     category_ids: [Cat1.id], restaurant_id: Restaurant1.id)
-Item4 = Item.create(title: 'Chicken Karahi', description: 'Pakistani chicken karahi', price: 900, status: 'show',
+Item4 = Item.create(name: 'Chicken Karahi', description: 'Pakistani chicken karahi', price: 900, status: 'show',
                     category_ids: [Cat5.id], restaurant_id: Restaurant1.id)
-Item5 = Item.create(title: 'Manchurian', description: 'Chinese special', price: 350, status: 'show',
+Item5 = Item.create(name: 'Manchurian', description: 'Chinese special', price: 350, status: 'show',
                     category_ids: [Cat2.id], restaurant_id: Restaurant1.id)
-Item6 = Item.create(title: 'Noodles', description: 'Chinese most favourite', price: 180, status: 'show',
+Item6 = Item.create(name: 'Noodles', description: 'Chinese most favourite', price: 180, status: 'show',
                     category_ids: [Cat2.id], restaurant_id: Restaurant2.id)
-Item7 = Item.create(title: 'Biryani', description: 'Special chicken biryani', price: 250, status: 'show',
+Item7 = Item.create(name: 'Biryani', description: 'Special chicken biryani', price: 250, status: 'show',
                     category_ids: [Cat5.id], restaurant_id: Restaurant2.id)
-Item8 = Item.create(title: 'Prawns', description: 'Continental', price: 2500, status: 'show',
+Item8 = Item.create(name: 'Prawns', description: 'Continental', price: 2500, status: 'show',
                     category_ids: [Cat2.id, Cat3.id], restaurant_id: Restaurant2.id)
-Item9 = Item.create(title: 'Sweet Potato Pie', description: 'Continental', price: 1500, status: 'show',
+Item9 = Item.create(name: 'Sweet Potato Pie', description: 'Continental', price: 1500, status: 'show',
                     category_ids: [Cat3.id], restaurant_id: Restaurant2.id)
-Item10 = Item.create(title: 'Chicken And Cheese Salad.', description: 'Continental', price: 1800, status: 'show',
+Item10 = Item.create(name: 'Chicken And Cheese Salad.', description: 'Continental', price: 1800, status: 'show',
                      category_ids: [Cat3.id], restaurant_id: Restaurant2.id)
-Item11 = Item.create(title: 'Margherita Pizza', description: 'Italian style pizza', price: 1150, status: 'show',
+Item11 = Item.create(name: 'Margherita Pizza', description: 'Italian style pizza', price: 1150, status: 'show',
                      category_ids: [Cat4.id], restaurant_id: Restaurant3.id)
-Item12 = Item.create(title: 'Pasta Carbonara.', description: 'Italian special', price: 960, status: 'show',
+Item12 = Item.create(name: 'Pasta Carbonara.', description: 'Italian special', price: 960, status: 'show',
                      category_ids: [Cat4.id], restaurant_id: Restaurant3.id)
-Item13 = Item.create(title: 'Chow Mein', description: 'Chinese', price: 280, status: 'show',
+Item13 = Item.create(name: 'Chow Mein', description: 'Chinese', price: 280, status: 'show',
                      category_ids: [Cat2.id], restaurant_id: Restaurant3.id)
-Item14 = Item.create(title: 'Kung Pao Chicken', description: 'Served with fried rice', price: 280, status: 'show',
+Item14 = Item.create(name: 'Kung Pao Chicken', description: 'Served with fried rice', price: 280, status: 'show',
                      category_ids: [Cat2.id], restaurant_id: Restaurant3.id)
-Item15 = Item.create(title: 'Dumplings', description: 'Chinese', price: 120, status: 'show',
+Item15 = Item.create(name: 'Dumplings', description: 'Chinese', price: 120, status: 'show',
                      category_ids: [Cat1.id, Cat4.id], restaurant_id: Restaurant4.id)
-Item16 = Item.create(title: 'Nihari', description: 'Pakistans most favourite', price: 450, status: 'show',
+Item16 = Item.create(name: 'Nihari', description: 'Pakistans most favourite', price: 450, status: 'show',
                      category_ids: [Cat2.id], restaurant_id: Restaurant4.id)
-Item17 = Item.create(title: 'Halwa Puri.', description: 'Breakfast', price: 120, status: 'show',
+Item17 = Item.create(name: 'Halwa Puri.', description: 'Breakfast', price: 120, status: 'show',
                      category_ids: [Cat1.id, Cat4.id], restaurant_id: Restaurant4.id)
-Item18 = Item.create(title: 'Saag', description: 'Punjabi Special', price: 250, status: 'show',
+Item18 = Item.create(name: 'Saag', description: 'Punjabi Special', price: 250, status: 'show',
                      category_ids: [Cat5.id], restaurant_id: Restaurant5.id)
-Item19 = Item.create(title: 'Lassi', description: 'This is pizza', price: 850, status: 'show',
+Item19 = Item.create(name: 'Lassi', description: 'This is pizza', price: 850, status: 'show',
                      category_ids: [Cat5.id], restaurant_id: Restaurant5.id)
 @order1 = OrderDetail.create(user_id: User1.id, phone: '92003212154', status: 'ordered', grand_total: 850,
                              address: 'Dha phase 1 Lahore')
