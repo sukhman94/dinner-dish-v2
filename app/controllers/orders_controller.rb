@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
     @order = authorize OrderDetail.create(order_params)
     if @order.save
       flash[:notice] = 'Your Order has been placed Successfully'
-      OrderMailer.with(order: @order).new_order_email.deliver_now
+      OrderMailer.with(order: @order).new_order_email.deliver_later
       redirect_to root_path
     else
       render 'new'
@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
 
   def update
     @update = OrderDetail.update(params[:id], update_params)
-    OrderStatusMailer.with(order: @update).order_status_email.deliver_now if @update.cancelled?
+    OrderStatusMailer.with(order: @update).order_status_email.deliver_later if @update.cancelled?
     redirect_to order_path
   end
 

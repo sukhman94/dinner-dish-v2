@@ -42,7 +42,7 @@
                 </tr>
               </thead>
               <tbody>
-                <% @order_item.sort.each_with_index do |item, index| %>
+                <% @order_item.sort.reverse.each_with_index do |item, index| %>
                   <tr>
                     <td class="col-1 col-sm-1 text-center"><%= index + 1 %></td>
                     <td class="text-center"><%= item.item.name %></td>

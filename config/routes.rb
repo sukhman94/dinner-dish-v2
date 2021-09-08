@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   resources :restaurants
   devise_for :users, controllers: { sessions: 'custom_sessions' }
   resources :orders
+
   root 'welcome#index'
 end

@@ -131,7 +131,7 @@
                                       </tr>
                                       <tr style="border-collapse:collapse">
                                         <td style="padding:0;Margin:0;font-size:14px;line-height:21px">Order Total:</td>
-                                        <td style="padding:0;Margin:0;font-size:14px;line-height:21px">Rs. <%= 0 %></td>
+                                        <td style="padding:0;Margin:0;font-size:14px;line-height:21px">Rs. <%=<%= @order.grand_total %>%></td>
                                       </tr>
                                     </table>
                                     <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><br>
@@ -225,7 +225,7 @@
                     </table>
                         <![endif]--></td>
                     </tr>
-                    <% @order.order_items.sort.each do |item| %>
+                    <% @order.order_items.sort.reverse.each do |item| %>
                     <tr style="border-collapse:collapse">
                       <td align="left" style="padding:0;Margin:0;padding-left:20px;padding-right:20px">
                         <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
@@ -307,7 +307,7 @@
                                     <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:500px" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" align="right" role="presentation">
                                       <tr style="border-collapse:collapse">
                                         <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px">Subtotal (3 items):</td>
-                                        <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px"><%= 0 %></td>
+                                        <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px"><%=<%= @order.grand_total %>%></td>
                                       </tr>
                                       <tr style="border-collapse:collapse">
                                         <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px">Flat-rate Shipping:</td>
@@ -319,7 +319,7 @@
                                       </tr>
                                       <tr style="border-collapse:collapse">
                                         <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px"><strong>Order Total:</strong></td>
-                                        <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px;color:#d48344"><strong>Rs. <%= 0 %></strong></td>
+                                        <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px;color:#d48344"><strong>Rs. <%=<%= @order.grand_total %>%></strong></td>
                                       </tr>
                                     </table>
                                     <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><br>

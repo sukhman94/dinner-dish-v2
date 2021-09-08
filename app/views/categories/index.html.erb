@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @categories.sort.each do |category| %>
+    <% @categories.sort.reverse.each do |category| %>
       <tr>
         <td><%= category.name %></td>
         <td class="text-center"><%= link_to 'Edit', edit_category_path(category) %></td>

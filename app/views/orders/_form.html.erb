@@ -1,4 +1,6 @@
-<%= form_with model: @status, url: order_path ,local: true do |form| %>
-  <%= form.select :status, ['ordered', 'paid', 'cancelled', 'completed'],{}, {class:"selectpicker w-50"} %>
-  <%= form.submit "Update", class:"btn btn-success w-25" %>
+<% if current_user.admin? %>
+  <%= form_with model: @status, url: order_path ,remote: true do |form| %>
+    <%= form.select :status, ['ordered', 'paid', 'cancelled', 'completed'],{}, {class:"selectpicker w-50"} %>
+    <%= form.submit "Update", class:"btn btn-success w-25" %>
+  <% end %>
 <% end %>

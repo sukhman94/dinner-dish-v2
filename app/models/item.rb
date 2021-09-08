@@ -10,6 +10,7 @@ class Item < ApplicationRecord
   has_many_attached :item_image, dependent: :destroy
 
   validates :name, presence: true
+  validates :status, presence: true
   validates :description, presence: true
   validates :price, presence: true, numericality: { greater_than: 0 }
 

@@ -20,7 +20,6 @@
 //= require_tree .
 
 $(document).on('turbolinks:load', function () {
-
   // to load select-box-rails
   $(window).trigger('load.bs.select.data-api');
 
@@ -54,5 +53,3 @@ $(document).on('turbolinks:load', function () {
     });
   });
 });
-
-
