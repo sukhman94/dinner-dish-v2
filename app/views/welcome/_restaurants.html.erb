@@ -1,22 +1,22 @@
-<% @restaurants.each do |restaurant| %>
-  <div class="main z-depth-4">
-    <p class="head"><%= restaurant.name %> </p>
-    <table class="table">
-      <tr>
-        <td>
-          <p class="rate d-none">Ratings - <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i> <a href="#"> 4,321 reviews</a></p>
-          <%= link_to "View Products", restaurant_path(restaurant), color: "waves-effect waves-light btns upper" %>
-        </td>
-        <td> <img class="responsive-img pica right" src="<%= url_for(restaurant.avatar) if restaurant.avatar.attached? %>" alt=""> </td>
-      </tr>
-      <tr>
-        <td>
-          <center><a class="waves-effect waves-light btns lower">RESERVE A TABLE</a></center>
-        </td>
-        <td>
-          <center><a class="waves-effect waves-light btns lower">TABLES FOR TOMORROW</a></center>
-        </td>
-      </tr>
-    </table>
+<div class="container">
+  <div class="row">
+    <% @restaurants.each do |restaurant| %>
+      <div class="col-md-4 text-center">
+        <div class="card">
+          <div class="card__blur">
+            <%= restaurant_all_image(restaurant) %>
+          </div>
+          <div class="card__logo text-center">
+            <%= restaurant_avatar(restaurant) %>
+          </div>
+          <div class="card__info mt-4">
+            <h4><%= restaurant.name %></h4>
+            <p><%= restaurant.description %></p>
+            <p>RATING STARTS</p>
+          </div>
+          <footer class="card__footer"><%= link_to 'View Products', restaurant_path(restaurant), class:"text-secondary" %></footer>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

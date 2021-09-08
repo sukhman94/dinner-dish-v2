@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_210_903_164_056) do # rubocop:disable Metrics/BlockLength
+ActiveRecord::Schema.define(version: 20_210_906_141_218) do # rubocop:disable Metrics/BlockLength
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -41,22 +41,23 @@ ActiveRecord::Schema.define(version: 20_210_903_164_056) do # rubocop:disable Me
   create_table 'carts', force: :cascade do |t|
     t.string 'session_id'
     t.bigint 'item_id'
-    t.integer 'quantity'
-    t.integer 'price'
+    t.integer 'quantity', null: false
+    t.integer 'price', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['item_id'], name: 'index_carts_on_item_id'
+    t.index %w[session_id item_id], name: 'index_carts_on_session_id_and_item_id'
   end
 
   create_table 'categories', force: :cascade do |t|
-    t.string 'name'
+    t.string 'name', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
   end
 
   create_table 'category_items', force: :cascade do |t|
-    t.bigint 'item_id'
-    t.bigint 'category_id'
+    t.bigint 'item_id', null: false
+    t.bigint 'category_id', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['category_id'], name: 'index_category_items_on_category_id'
@@ -64,23 +65,24 @@ ActiveRecord::Schema.define(version: 20_210_903_164_056) do # rubocop:disable Me
   end
 
   create_table 'items', force: :cascade do |t|
-    t.string 'name'
-    t.integer 'status'
-    t.string 'description'
+    t.string 'name', null: false
+    t.integer 'status', null: false
+    t.string 'description', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.bigint 'restaurant_id'
-    t.float 'price'
+    t.bigint 'restaurant_id', null: false
+    t.float 'price', null: false
     t.index ['restaurant_id'], name: 'index_items_on_restaurant_id'
+    t.index ['status'], name: 'index_items_on_status'
   end
 
   create_table 'order_details', force: :cascade do |t|
-    t.bigint 'user_id'
-    t.string 'address'
-    t.integer 'total'
-    t.bigint 'restaurant_id'
-    t.integer 'status', default: 0
-    t.string 'phone'
+    t.bigint 'user_id', null: false
+    t.string 'address', null: false
+    t.float 'total', null: false
+    t.bigint 'restaurant_id', null: false
+    t.integer 'status', default: 0, null: false
+    t.string 'phone', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['restaurant_id'], name: 'index_order_details_on_restaurant_id'
@@ -88,10 +90,10 @@ ActiveRecord::Schema.define(version: 20_210_903_164_056) do # rubocop:disable Me
   end
 
   create_table 'order_items', force: :cascade do |t|
-    t.bigint 'order_detail_id'
-    t.bigint 'item_id'
-    t.integer 'quantity'
-    t.integer 'price'
+    t.bigint 'order_detail_id', null: false
+    t.bigint 'item_id', null: false
+    t.integer 'quantity', null: false
+    t.float 'price', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['item_id'], name: 'index_order_items_on_item_id'
@@ -99,8 +101,8 @@ ActiveRecord::Schema.define(version: 20_210_903_164_056) do # rubocop:disable Me
   end
 
   create_table 'restaurant_items', force: :cascade do |t|
-    t.bigint 'item_id'
-    t.bigint 'restaurant_id'
+    t.bigint 'item_id', null: false
+    t.bigint 'restaurant_id', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['item_id'], name: 'index_restaurant_items_on_item_id'
@@ -108,8 +110,8 @@ ActiveRecord::Schema.define(version: 20_210_903_164_056) do # rubocop:disable Me
   end
 
   create_table 'restaurants', force: :cascade do |t|
-    t.string 'name'
-    t.string 'description'
+    t.string 'name', null: false
+    t.string 'description', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
   end
