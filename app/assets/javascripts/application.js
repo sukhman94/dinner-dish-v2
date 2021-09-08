@@ -30,8 +30,7 @@ $(document).on('turbolinks:load', function () {
     var button = $("#menu-toggle")
 
     // handle click and add class
-    button.on("click", () => {
-      // alert("adfasf")
+    button.on("click", function () {
       banner.toggleClass("toggled")
     })
   });
