@@ -22,7 +22,7 @@
     <h3>All Images</h3>
     <div class="container-fluid mt-5">
       <div class="row">
-        <% @item.item_image.each do |image| %>
+        <% @item.item_image.sort.each do |image| %>
           <div class="col-md-4 text-center">
             <div class="mw-75">
               <% if @item.item_image.count > 1 && current_user.admin? %>

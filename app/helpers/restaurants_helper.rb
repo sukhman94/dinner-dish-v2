@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module RestaurantsHelper # rubocop:disable Style/Documentation
+module RestaurantsHelper
   def restaurant_avatar(restaurant)
     size = '50x50!'
     if restaurant.avatar.attached?

@@ -8,7 +8,7 @@
     <label><%= item.name %></label>
     <label class="desc"><%= item.description if item.description %></label>
     <label>Rs. <%= item.price %></label>
-    <% item.categories.each do |item| %>
+    <% item.categories.sort.each do |item| %>
       <span class="badge badge-success my-2"><%= item.name %></span>
     <% end %>
     <%= form_for(@cart, remote: true) do |f| %>

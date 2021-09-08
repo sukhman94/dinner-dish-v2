@@ -11,13 +11,13 @@
     </tr>
   </thead>
   <tbody>
-    <% @restaurants.each do |restaurant| %>
+    <% @restaurants.sort.each do |restaurant| %>
       <tr>
         <td><%= restaurant_avatar(restaurant) %></td>
         <td><%= restaurant.name %></td>
         <td><%= restaurant.description %></td>
         <td class="text-center"><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
-        <td class="text-center"><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
+        <td class="text-center"><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure you want to delete?' }, remote: true %></td>
       </tr>
     <% end %>
   </tbody>

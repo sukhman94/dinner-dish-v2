@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <% @restaurants.each do |restaurant| %>
+    <% @restaurants.sort.each do |restaurant| %>
       <div class="col-md-4 text-center">
         <div class="card">
           <div class="card__blur">
@@ -14,7 +14,7 @@
             <p><%= restaurant.description %></p>
             <p>RATING STARTS</p>
           </div>
-          <footer class="card__footer"><%= link_to 'View Products', restaurant_path(restaurant), class:"text-secondary" %></footer>
+          <footer class="card__footer"><%= link_to 'View Products', restaurant_path(restaurant), class:"text-white" %></footer>
         </div>
       </div>
     <% end %>

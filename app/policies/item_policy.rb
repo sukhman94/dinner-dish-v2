@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class ItemPolicy < ApplicationPolicy # rubocop:disable Style/Documentation
-  class Scope < Scope # rubocop:disable Style/Documentation
+class ItemPolicy < ApplicationPolicy
+  class Scope < Scope
     def resolve
       scope.all
     end
@@ -12,6 +12,26 @@ class ItemPolicy < ApplicationPolicy # rubocop:disable Style/Documentation
   end
 
   def index?
+    user&.admin?
+  end
+
+  def new?
+    user&.admin?
+  end
+
+  def show?
+    user&.admin? || user&.user?
+  end
+
+  def create?
+    user&.admin?
+  end
+
+  def update?
+    user&.admin?
+  end
+
+  def destroy?
     user&.admin?
   end
 end
