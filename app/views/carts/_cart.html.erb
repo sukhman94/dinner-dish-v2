@@ -21,7 +21,8 @@
         </td>
         <td data-th="Subtotal" class="text-center">Rs. <%= cart_item.quantity.to_i * cart_item.item.price.to_i %></td>
         <td class="actions" data-th="action">
-          <%= f.submit '',type: 'submit', class: "btn btn-info btn-sm fa fa-refresh"  %>
+
+          <%= button_tag '', type: 'submit', class: "btn btn-info btn-sm fa fa-refresh"  %>
           <%= link_to '', cart_item, method: :delete, data: { confirm: 'Are you sure you want to delete?' }, class:"fa fa-trash-o btn btn-danger btn-sm", remote: true %>
         </td>
       </tr>
